@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func bubbleSort(nums []int) {
 	for i := range nums {
 		swapped := false
@@ -16,11 +14,4 @@ func bubbleSort(nums []int) {
 		}
 	}
 
-}
-
-func main() {
-	nums := []int{8, 4, 1, 12, 4, 3, 6, 7}
-	fmt.Println(nums)
-	bubbleSort(nums)
-	fmt.Println(nums)
 }
