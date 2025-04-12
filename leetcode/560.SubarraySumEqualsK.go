@@ -1,13 +1,16 @@
 package main
 
 func subarraySum(nums []int, k int) int {
-	prefixSum, sum, count := map[int]int{0: 1}, 0, 0
-	for _, num := range nums {
-		sum += num
+	prefixSum, sum, count := make(map[int]int, len(nums)), 0, 0
+	for i, _ := range nums {
+		sum += nums[i]
+		if sum == k {
+			count++
+		}
 		if freq, ok := prefixSum[sum-k]; ok {
 			count += freq
 		}
-		prefixSum[sum] += 1
+		prefixSum[sum]++
 	}
 	return count
 }
