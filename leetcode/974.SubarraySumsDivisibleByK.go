@@ -1,15 +1,17 @@
 package main
 
 func subarraysDivByK(nums []int, k int) int {
-	count, prefixSum, prefixMap := 0, 0, make(map[int]int, min(k+1, len(nums)))
-	prefixMap[0] = 1
-	for idx := 0; idx < len(nums); idx++ {
-		prefixSum += nums[idx]
-		mod := ((prefixSum % k) + k) % k
-		if prefixIdx, present := prefixMap[mod]; present {
-			count += prefixIdx
-		}
-		prefixMap[mod]++
+	arrayQtdMod, s, res := make([]int, k), 0, 0
+	arrayQtdMod[0]++
+	for _, v := range nums {
+		s = ((s+v)%k + k) % k // evita o mod negativo
+		arrayQtdMod[s]++
 	}
-	return count
+	for _, qtdMod := range arrayQtdMod {
+		if qtdMod == 0 {
+			continue
+		}
+		res += (qtdMod * (qtdMod - 1)) / 2
+	}
+	return res
 }
