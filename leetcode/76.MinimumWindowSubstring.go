@@ -40,10 +40,3 @@ func minWindow(s string, t string) string {
 	}
 	return s[start : start+minLen]
 }
-
-// func main() {
-// 	s := "ADOBECODEBANC"
-// 	t := "ABC"
-// 	result := minWindow(s, t)
-// 	fmt.Println("Menor janela:", result) // Esperado: "BANC"
-// }
